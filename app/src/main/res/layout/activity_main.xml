@@ -1,65 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tylerptl.cheapgroceries.MainActivity">
+    tools:context="com.example.tylerptl.cheapgroceries.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <EditText
+        android:id="@+id/hebName"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/samsName"
+        android:layout_alignBottom="@+id/samsName"
+        android:layout_alignEnd="@+id/hebPrice"
+        android:layout_alignStart="@+id/hebPrice"
+        android:backgroundTint="@android:color/transparent"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="HEB"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/samsName"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/samsPrice"
+        android:layout_alignEnd="@+id/samsPrice"
+        android:layout_alignStart="@+id/samsPrice"
+        android:backgroundTint="@android:color/transparent"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Sam's Club"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/hebPrice"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="18dp"
+        android:hint="Price"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/samsPrice"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/walmartPrice"
+        android:layout_alignBottom="@+id/walmartPrice"
+        android:layout_centerHorizontal="true"
+        android:hint="Price"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/butCalc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/butSave"
+        android:layout_alignBottom="@+id/butSave"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@+id/butSave"
+        android:text="Calculate" />
 
     <EditText
         android:id="@+id/userInput"
-        android:layout_width="191dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="161dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/walmartPrice"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorAccent"
+        android:hint="Search"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/samsPrice"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside" />
+        android:textAlignment="center"
+        android:textSize="10sp" />
 
     <Button
         android:id="@+id/butSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="Save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userInput" />
-
-    <Button
-        android:id="@+id/butCalculate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Calculate Price"
-        app:layout_constraintBaseline_toBaselineOf="@+id/butSave"
-        app:layout_constraintStart_toEndOf="@+id/butSave" />
+        android:layout_alignStart="@+id/userInput"
+        android:layout_below="@+id/userInput"
+        android:layout_marginTop="26dp"
+        android:text="Save" />
 
     <TextView
         android:id="@+id/walmartPrice"
-        android:layout_width="0dp"
-        android:layout_height="63dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/samsPrice"
-        app:layout_constraintEnd_toStartOf="@+id/samsPrice"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:hint="Price"
+        android:textAlignment="center" />
 
-    <TextView
-        android:id="@+id/samsPrice"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="224dp"
-        android:layout_marginEnd="104dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/walmartPrice"
-        app:layout_constraintTop_toBottomOf="@+id/userInput" />
+    <EditText
+        android:id="@+id/walmartName"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/walmartPrice"
+        android:layout_alignStart="@+id/walmartPrice"
+        android:backgroundTint="@android:color/transparent"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Walmart"
+        android:textSize="15sp" />
 
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

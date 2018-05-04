@@ -1,7 +1,5 @@
 package com.example.tylerptl.cheapgroceries;
-import com.example.tylerptl.cheapgroceries.SubClasses.*;
 
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -18,12 +16,12 @@ public class MainActivity extends AppCompatActivity {
     EditText textInput;
     Button butSave;
     ArrayList<String> list;
-    com.example.tylerptl.cheapgroceries.walmartStore walmartStore;
+    // com.example.tylerptl.cheapgroceries.walmartStore walmartStore;
     Button calc;
-    TextView walmartPrice;
-    TextView samsPrice;
+    TextView walmartPrice, samsPrice, hebPrice;
     DecimalFormat df;
-    samsInventory samsInventory;
+    storeInventory samsInventory, walmartInventory, hebInventory;
+
 
     //Double totalSamsPrice;
 
@@ -34,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
         list = new ArrayList<>();
         textInput = (EditText) findViewById(R.id.userInput);
         butSave = (Button) findViewById(R.id.butSave);
-        calc = (Button) findViewById(R.id.butCalculate);
+        calc = (Button) findViewById(R.id.butCalc);
         walmartPrice = (TextView) findViewById(R.id.walmartPrice);
         samsPrice = (TextView) findViewById(R.id.samsPrice);
+        hebPrice = (TextView) findViewById(R.id.hebPrice);
          df = new DecimalFormat("#.##");
         //task = new gatherSamsPrices();
 
@@ -107,31 +106,46 @@ public class MainActivity extends AppCompatActivity {
         String str = textInput.getText().toString();
         list.add(str);
         textInput.getText().clear();
+        textInput.setText(null);
     }
 
     public void generateCarts(){
-        samsInventory = new samsInventory(list);
+        samsInventory = new storeInventory(list);
         samsInventory.searchInventory();
         Double samsTotal = samsInventory.getTotalPrice();
         samsTotal = Double.valueOf(df.format(samsTotal));
         samsPrice.setText(samsTotal.toString());
 
-        prepareWalmartPrices();
-    }
-    public void prepareWalmartPrices() {
-        walmartStore = new walmartStore(list);
-        //samsStore = new samsStore(list);
-        try {
-            walmartStore.createCart();
-            //samsStore.createCart();
-            walmartPrice.setText(walmartStore.getTotalCost().toString());
-            // prepareSamsPrices();
-           // samsPrice.setText(samsStore.getTotalCost().toString());
+        walmartInventory = new storeInventory(list);
+        walmartInventory.searchInventory();
+        Double walmartTotal = walmartInventory.getTotalPrice();
+        walmartTotal = Double.valueOf(df.format(walmartTotal));
+        walmartPrice.setText(walmartTotal.toString());
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        hebInventory = new storeInventory(list);
+        hebInventory.searchInventory();
+        Double hebTotal = hebInventory.getTotalPrice();
+        hebTotal = Double.valueOf(df.format(hebTotal));
+        hebPrice.setText(hebTotal.toString());
+
+
+
+       // prepareWalmartPrices();
     }
+//    public void prepareWalmartPrices() {
+//        walmartStore = new walmartStore(list);
+//        //samsStore = new samsStore(list);
+//        try {
+//            walmartStore.createCart();
+//            //samsStore.createCart();
+//            walmartPrice.setText(walmartStore.getTotalCost().toString());
+//            // prepareSamsPrices();
+//           // samsPrice.setText(samsStore.getTotalCost().toString());
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 //    public void prepareSamsPrices(){
 //        String samsUrl ="https://www.samsclub.com/sams/search/searchResults.jsp?clubId=8226&limit=48&offset=0&searchTerm=";

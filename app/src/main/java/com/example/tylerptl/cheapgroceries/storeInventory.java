@@ -11,15 +11,15 @@ import java.util.HashMap;
  *
  */
 
-public class samsInventory {
-    Bacon bacon = new Bacon();
-    Bread bread = new Bread();
-    Coffee coffee = new Coffee();
-    Eggs eggs = new Eggs();
-    Milk milk = new Milk();
-    Rice rice = new Rice();
-    Oats oats = new Oats();
-    ArrayList<String> list;
+public class storeInventory {
+    private Bacon bacon = new Bacon();
+    private Bread bread = new Bread();
+    private Coffee coffee = new Coffee();
+    private Eggs eggs = new Eggs();
+    private Milk milk = new Milk();
+    private Rice rice = new Rice();
+    private Oats oats = new Oats();
+    private ArrayList<String> list;
 
     public HashMap<String, Double> getShoppingCart() {
         return shoppingCart;
@@ -35,7 +35,7 @@ public class samsInventory {
 
 
 
-    samsInventory(ArrayList list){
+    storeInventory(ArrayList list){
         bacon.populateInventory();
         bread.populateInventory();
         coffee.populateInventory();
