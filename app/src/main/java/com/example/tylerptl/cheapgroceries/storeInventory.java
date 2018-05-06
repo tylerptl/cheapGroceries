@@ -2,6 +2,7 @@ package com.example.tylerptl.cheapgroceries;
 import com.example.tylerptl.cheapgroceries.SubClasses.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -19,7 +20,10 @@ public class storeInventory {
     private Milk milk = new Milk();
     private Rice rice = new Rice();
     private Oats oats = new Oats();
-    private ArrayList<String> list;
+    private static ArrayList<String> itemTypes = new ArrayList<>();
+    ArrayList<String> list = new ArrayList<>();
+
+    public static ArrayList<String> getItemTypes() { return itemTypes; }
 
     public HashMap<String, Double> getShoppingCart() {
         return shoppingCart;
@@ -45,7 +49,7 @@ public class storeInventory {
         oats.populateInventory();
         this.list = list;
         shoppingCart = new HashMap<>();
-
+        Collections.addAll(itemTypes, "bacon", "bread","coffee","eggs","milk","rice","oats");
     }
 
     public void searchInventory(){

@@ -1,5 +1,6 @@
 package com.example.tylerptl.cheapgroceries;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TextView walmartPrice, samsPrice, hebPrice;
     DecimalFormat df;
     storeInventory samsInventory, walmartInventory, hebInventory;
+    ArrayList<String> availableItems;
 
     /////////////////////////Expandable List stuff below this line
 
@@ -52,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         samsPrice = (TextView) findViewById(R.id.samsPrice);
         hebPrice = (TextView) findViewById(R.id.hebPrice);
         df = new DecimalFormat("#.##");
+        availableItems = new ArrayList<>();
+        availableItems =storeInventory.getItemTypes();
+
         //task = new gatherSamsPrices();
 
 
@@ -69,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 generateCarts();
             }
         });
+
 
 
         ///////////////////////////// Expandable List stuff below this line
@@ -165,12 +171,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveSearch(){
         String str = textInput.getText().toString();
+        if(!availableItems.contains(str)){
+            textInput.setError("No stores carry this item type - re enter input");
+            return;
+        }
         list.add(str);
         textInput.getText().clear();
         textInput.setText(null);
     }
 
     public void generateCarts(){
+        samsPrice.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.defaultTextColor));
+        walmartPrice.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.defaultTextColor));
+        hebPrice.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.defaultTextColor));
+
         samsInventory = new storeInventory(list);
         samsInventory.searchInventory();
         Double samsTotal = samsInventory.getTotalPrice();
@@ -188,6 +202,14 @@ public class MainActivity extends AppCompatActivity {
         Double hebTotal = hebInventory.getTotalPrice();
         hebTotal = Double.valueOf(df.format(hebTotal));
         hebPrice.setText(hebTotal.toString());
+
+        if(samsTotal <= walmartTotal && samsTotal <= hebTotal){
+            samsPrice.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.cheapestCart));
+        }else if(walmartTotal <= samsTotal && walmartTotal <= hebTotal){
+            walmartPrice.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.cheapestCart));
+        }else{
+            hebPrice.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.cheapestCart));
+        }
 
         ExpandableListDataPump expand = new ExpandableListDataPump(walmartInventory.getShoppingCart(), samsInventory.getShoppingCart(), hebInventory.getShoppingCart());
         }
