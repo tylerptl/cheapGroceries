@@ -5,12 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     EditText textInput;
@@ -21,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
     TextView walmartPrice, samsPrice, hebPrice;
     DecimalFormat df;
     storeInventory samsInventory, walmartInventory, hebInventory;
+
+    /////////////////////////Expandable List stuff below this line
+
+    ExpandableListView expandableListView;
+    ExpandableListAdapter expandableListAdapter;
+    List<String> expandableListTitle;
+    HashMap<String, Double> expandableListDetail = new HashMap<>();
+
+
+    //////////////////////////////////////////////////////////////////
 
 
     //Double totalSamsPrice;
@@ -36,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
         walmartPrice = (TextView) findViewById(R.id.walmartPrice);
         samsPrice = (TextView) findViewById(R.id.samsPrice);
         hebPrice = (TextView) findViewById(R.id.hebPrice);
-         df = new DecimalFormat("#.##");
+        df = new DecimalFormat("#.##");
         //task = new gatherSamsPrices();
 
 
         butSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               saveSearch();
+                saveSearch();
 
             }
         });
@@ -54,7 +69,53 @@ public class MainActivity extends AppCompatActivity {
                 generateCarts();
             }
         });
+
+
+        ///////////////////////////// Expandable List stuff below this line
+//        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+//
+//        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+//        expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
+//        expandableListView.setAdapter(expandableListAdapter);
+//        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+//
+//            @Override
+//            public void onGroupExpand(int groupPosition) {
+//                Toast.makeText(getApplicationContext(),
+//                        expandableListTitle.get(groupPosition) + " List Expanded.",
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+//
+//            @Override
+//            public void onGroupCollapse(int groupPosition) {
+//                Toast.makeText(getApplicationContext(),
+//                        expandableListTitle.get(groupPosition) + " List Collapsed.",
+//                        Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//            @Override
+//            public boolean onChildClick(ExpandableListView parent, View v,
+//                                        int groupPosition, int childPosition, long id) {
+//                Toast.makeText(
+//                        getApplicationContext(),
+//                        expandableListTitle.get(groupPosition)
+//                                + " -> "
+//                                + expandableListDetail.get(
+//                                expandableListTitle.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT
+//                ).show();
+//                return false;
+//            }
+//        });
     }
+
+//////////////////////////////////////////////////////////////////////
+
 
 //    /**
 //     * This works SOME OF THE TIME - other times it just crashes the app do to Asynctask
@@ -128,6 +189,9 @@ public class MainActivity extends AppCompatActivity {
         hebTotal = Double.valueOf(df.format(hebTotal));
         hebPrice.setText(hebTotal.toString());
 
+        ExpandableListDataPump expand = new ExpandableListDataPump(walmartInventory.getShoppingCart(), samsInventory.getShoppingCart(), hebInventory.getShoppingCart());
+        }
+
 
 
        // prepareWalmartPrices();
@@ -161,4 +225,4 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 //    }
-}
+
