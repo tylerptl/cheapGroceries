@@ -9,17 +9,15 @@
 
 
     <TextView
-        android:id="@+id/hebName"
+        android:id="@+id/walmartName"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_alignBaseline="@+id/samsName"
-        android:layout_alignBottom="@+id/samsName"
-        android:layout_alignEnd="@+id/hebPrice"
-        android:layout_alignStart="@+id/hebPrice"
+        android:layout_above="@+id/walmartPrice"
+        android:layout_alignStart="@+id/walmartPrice"
         android:backgroundTint="@android:color/transparent"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="HEB"
+        android:text="Walmart"
         android:textSize="15sp" />
 
     <TextView
@@ -36,14 +34,23 @@
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/hebPrice"
+        android:id="@+id/walmartPrice"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="18dp"
+        android:layout_marginStart="20dp"
         android:hint="Price"
         android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/butClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/butCalc"
+        android:layout_alignBottom="@+id/butCalc"
+        android:layout_toEndOf="@+id/samsName"
+        android:text="Clear"/>
 
     <TextView
         android:id="@+id/samsPrice"
@@ -65,6 +72,29 @@
         android:layout_toEndOf="@+id/butSave"
         android:text="Calculate" />
 
+    <Button
+        android:id="@+id/butSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/userInput"
+        android:layout_below="@+id/userInput"
+        android:layout_marginTop="26dp"
+        android:text="Save" />
+
+    <TextView
+        android:id="@+id/hebName"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/samsName"
+        android:layout_alignBottom="@+id/samsName"
+        android:layout_alignEnd="@+id/hebPrice"
+        android:layout_alignStart="@+id/hebPrice"
+        android:backgroundTint="@android:color/transparent"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="HEB"
+        android:textSize="15sp" />
+
     <EditText
         android:id="@+id/userInput"
         android:layout_width="150dp"
@@ -78,46 +108,27 @@
         android:textAlignment="center"
         android:textSize="10sp" />
 
-    <Button
-        android:id="@+id/butSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/userInput"
-        android:layout_below="@+id/userInput"
-        android:layout_marginTop="26dp"
-        android:text="Save" />
-
     <TextView
-        android:id="@+id/walmartPrice"
+        android:id="@+id/hebPrice"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginEnd="18dp"
         android:hint="Price"
         android:textAlignment="center" />
 
-    <TextView
-        android:id="@+id/walmartName"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_above="@+id/walmartPrice"
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/userInput"
         android:layout_alignStart="@+id/walmartPrice"
-        android:backgroundTint="@android:color/transparent"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Walmart"
-        android:textSize="15sp" />
-
-    <ExpandableListView
-        android:id="@+id/expandableListView"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="0.5dp"
-        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft" />
+        android:layout_below="@+id/walmartPrice"
+        android:layout_marginTop="24dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:visibility="visible" />
 
 
 </RelativeLayout>

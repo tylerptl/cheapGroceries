@@ -37,7 +37,14 @@ public class storeInventory {
 
     Double totalPrice = 0.00;
 
+    /**
+     * This constructor will allow the app to check if the search term inputted by the user
+     * is carried by the stores.
+     */
+    storeInventory(){
+        Collections.addAll(itemTypes, "bacon","bread","coffee","eggs","milk","rice","oats");
 
+    }
 
     storeInventory(ArrayList list){
         bacon.populateInventory();
@@ -49,7 +56,7 @@ public class storeInventory {
         oats.populateInventory();
         this.list = list;
         shoppingCart = new HashMap<>();
-        Collections.addAll(itemTypes, "bacon", "bread","coffee","eggs","milk","rice","oats");
+       // Collections.addAll(itemTypes, "bacon","bread","coffee","eggs","milk","rice","oats");
     }
 
     public void searchInventory(){
