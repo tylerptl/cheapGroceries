@@ -39,7 +39,7 @@ public class storeInventory {
 
     /**
      * This constructor will allow the app to check if the search term inputted by the user
-     * is carried by the stores.
+     * is carried by the stores.+
      */
     storeInventory(){
         Collections.addAll(itemTypes, "bacon","bread","coffee","eggs","milk","rice","oats");

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">cheapGroceries</string>
+    <string name="edittext_hint"><font size="12">Search food type</font></string>
 </resources>

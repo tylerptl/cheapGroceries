@@ -40,10 +40,11 @@ public class Bread {
         list.put("Bond Bread", randomVal());
         list.put("Warburtons", randomVal());
         list.put("Pepperidge Farm", randomVal());
+        cheapestPrice = (Double) Collections.min(list.values());
+
     }
 
     public Double getCheapestPrice(){
-        cheapestPrice = (Double) Collections.min(list.values());
         return cheapestPrice;
     }
 

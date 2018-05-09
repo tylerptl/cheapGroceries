@@ -36,24 +36,25 @@ public class Bacon {
         list.put("Smithfield", randomVal());
         list.put("Farmland Foods", randomVal());
         list.put("Black Label", randomVal());
+        cheapestPrice = (Double) Collections.min(list.values());
+
     }
 
     public Double getCheapestPrice(){
-      cheapestPrice = (Double) Collections.min(list.values());
       return cheapestPrice;
     }
 
     public String getCheapestName(){
-        String lowestKey="";
+        cheapestName="";
         Double lowestNum = Double.MAX_VALUE;
         for(String key : list.keySet()){
             Double valueTest = list.get(key);
             if(valueTest < lowestNum){
-                lowestKey = key;
+                cheapestName = key;
 
            }
        }
-       return lowestKey;
+       return cheapestName;
     }
 
 }

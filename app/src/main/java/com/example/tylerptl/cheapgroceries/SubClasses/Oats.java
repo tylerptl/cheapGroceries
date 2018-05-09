@@ -31,10 +31,11 @@ public class Oats {
         list.put("Arrowhead Mills", randomVal());
         list.put("Annie's", randomVal());
         list.put("Quaker Oats", randomVal());
+        cheapestPrice = (Double) Collections.min(list.values());
+
     }
 
     public Double getCheapestPrice(){
-        cheapestPrice = (Double) Collections.min(list.values());
         return cheapestPrice;
     }
 

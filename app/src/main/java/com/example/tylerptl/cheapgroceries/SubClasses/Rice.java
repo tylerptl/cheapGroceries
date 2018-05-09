@@ -31,10 +31,11 @@ public class Rice {
         list.put("Kohinoor Foods Limited", randomVal());
         list.put("Amira Basmati", randomVal());
         list.put("Tilda ", randomVal());
+        cheapestPrice = (Double) Collections.min(list.values());
+
     }
 
     public Double getCheapestPrice(){
-        cheapestPrice = (Double) Collections.min(list.values());
         return cheapestPrice;
     }
 

@@ -30,10 +30,12 @@ public class Eggs {
         list.put("Farmhouse", randomVal());
         list.put("NestFresh", randomVal());
         list.put("Central Market", randomVal());
+
+        cheapestPrice = (Double) Collections.min(list.values());
+
     }
 
     public Double getCheapestPrice(){
-        cheapestPrice = (Double) Collections.min(list.values());
         return cheapestPrice;
     }
 

@@ -2,6 +2,7 @@ package com.example.tylerptl.cheapgroceries.SubClasses;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created by Tyler on 5/3/2018.
@@ -20,7 +21,9 @@ public class Milk {
         range = high - low;
     }
     public Double randomVal(){
-        return (Math.random() * range) + (low <= high ? low : high);
+        Random r = new Random();
+        return low + (high-low) * r.nextDouble();
+//        return (Math.random() * range) + (low <= high ? low : high);
     }
 
     public void populateInventory(){
@@ -30,10 +33,11 @@ public class Milk {
         list.put("Almond Joy", randomVal());
         list.put("H-E-B", randomVal());
         list.put("Alprose", randomVal());
+        cheapestPrice = (Double) Collections.min(list.values());
+
     }
 
     public Double getCheapestPrice(){
-        cheapestPrice = (Double) Collections.min(list.values());
         return cheapestPrice;
     }
 

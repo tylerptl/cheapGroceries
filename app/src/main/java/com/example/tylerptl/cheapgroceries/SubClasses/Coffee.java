@@ -30,10 +30,11 @@ public class Coffee {
         list.put("La Colombe", randomVal());
         list.put("Evans Brothers", randomVal());
         list.put("Intelligentsia Black Cat", randomVal());
+        cheapestPrice = (Double) Collections.min(list.values());
+
     }
 
     public Double getCheapestPrice(){
-        cheapestPrice = (Double) Collections.min(list.values());
         return cheapestPrice;
     }
 

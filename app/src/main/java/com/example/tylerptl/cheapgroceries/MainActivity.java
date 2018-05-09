@@ -20,12 +20,12 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
     EditText textInput;
     Button butSave, butClear;
-    ArrayList<String> list;
-    Button calc;
+    ArrayList<String> list; // This ArrayList will store all the search terms inputted by the user
+    Button calc;    // This button will run the methods pertaining to gathering prices and displaying them
     TextView walmartPrice, samsPrice, hebPrice, walmartName, samsName, hebName;
     DecimalFormat df;
     storeInventory samsInventory, walmartInventory, hebInventory;
-    ArrayList<String> availableItems;
+    ArrayList<String> availableItems;   // This will be used to verify if the store has that type of foodstuff
     Spinner spinTest;
     String[] cartText;
 
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         samsName = (TextView) findViewById(R.id.samsName);
         hebName = (TextView) findViewById(R.id.hebName);
         df = new DecimalFormat("#.##");
+        df.setMinimumFractionDigits(2);
 
         storeInventory baseStore = new storeInventory();
         availableItems = new ArrayList<>();
@@ -62,20 +63,25 @@ public class MainActivity extends AppCompatActivity {
         walmartName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dropDown(walmartInventory.getShoppingCart());
-
+                if(!list.isEmpty()) {
+                    dropDown(walmartInventory.getShoppingCart());
+                }
             }
         });
         samsName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dropDown(samsInventory.getShoppingCart());
+                if (!list.isEmpty()) {
+                    dropDown(samsInventory.getShoppingCart());
+                }
             }
         });
         hebName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dropDown(hebInventory.getShoppingCart());
+                if(!list.isEmpty()) {
+                    dropDown(hebInventory.getShoppingCart());
+                }
             }
         });
 
@@ -101,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
                 generateCarts();
             }
         });
+
+        ArrayAdapter<String> defaultWalmart = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cartText);
+        spinTest.setAdapter(defaultWalmart);
 
     }
     public void dropDown(HashMap cart){
