@@ -19,10 +19,17 @@ public class Coffee {
         high = 7.50;
         range = high - low;
     }
+    /**
+     * This method is used to return a random price within the range listed above
+     * @return double which is assigned to a key in the hashmap
+     */
     public Double randomVal(){
         return (Math.random() * range) + (low <= high ? low : high);
     }
 
+    /**
+     * This method populates the hashmap with product names and their prices
+     */
     public void populateInventory(){
         list.put("Maxwell House", randomVal());
         list.put("Folgers", randomVal());
@@ -34,9 +41,17 @@ public class Coffee {
 
     }
 
+    /**
+     * This method returns the lowest value in the hasmap
+     * @return
+     */
     public Double getCheapestPrice(){
         return cheapestPrice;
     }
+    /**
+     * This method returns the key associated with the lowest value in the hashmap
+     * @return
+     */
 
     public String getCheapestName(){
         String lowestKey="";

@@ -108,10 +108,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter<String> defaultWalmart = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cartText);
+        ArrayAdapter<String> defaultWalmart = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cartText);  // This adapter will display 'Cart' in the dropdown when no store is selected
         spinTest.setAdapter(defaultWalmart);
 
     }
+
+    /**
+     * This method controls our dropdown. It creates a String[] with a size equal to how many search terms the user inputted. From there it fetches the HashMap representing the selected store's shopping cart
+     * and displays it accordingly
+     * @param cart This is the HashMap shopping cart that is passed when a user selects a store above the price display
+     */
     public void dropDown(HashMap cart){
         String[] itemsAndPrices = new String[list.size()];
         int num = 0;
@@ -125,6 +131,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method is called when a user hits the save button. If an item is not supported by the program then an error pops up asking the user to enter a valid search. Otherwise the program continues and adds the
+     * search to the ArrayList list and clears the text.
+     */
+
     public void saveSearch(){
         String str = textInput.getText().toString();
         if(!availableItems.contains(str.toLowerCase())){
@@ -137,6 +148,10 @@ public class MainActivity extends AppCompatActivity {
         textInput.setError(null);
 
     }
+
+    /**
+     * This method will clear out all elements inputted by the user in to the search. It will also reset the dropdown to display 'Cart' and reset the colors of all price displays to default black.
+     */
     public void clearList(){
         ArrayAdapter<String> defaultWalmart = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cartText);
         list.clear();
@@ -147,12 +162,20 @@ public class MainActivity extends AppCompatActivity {
         spinTest.setAdapter(defaultWalmart);
     }
 
+    /**
+     * This method is the actual code used to remove any green text from the price displays and reset all to default black.
+     */
+
     public void setTexttoDefault(){
         samsPrice.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.defaultTextColor));
         walmartPrice.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.defaultTextColor));
         hebPrice.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.defaultTextColor));
     }
 
+    /**
+     * This method is called once the user selects 'Calculate'. Within the method, 3 storeInventory classes are created and populated. From there the program sets the price display text as well as
+     * changes the color of the cheapest cart to green.
+     */
     public void generateCarts(){
         setTexttoDefault();
 

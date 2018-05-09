@@ -19,10 +19,17 @@ public class Eggs {
         high = 5.50;
         range = high - low;
     }
+    /**
+     * This method is used to return a random price within the range listed above
+     * @return double which is assigned to a key in the hashmap
+     */
     public Double randomVal(){
         return (Math.random() * range) + (low <= high ? low : high);
     }
 
+    /**
+     * This method populates the hashmap with product names and their prices
+     */
     public void populateInventory(){
         list.put("Hill Country", randomVal());
         list.put("Sunups", randomVal());
@@ -34,11 +41,19 @@ public class Eggs {
         cheapestPrice = (Double) Collections.min(list.values());
 
     }
+    /**
+     * This method returns the lowest value in the hasmap
+     * @return
+     */
 
     public Double getCheapestPrice(){
         return cheapestPrice;
     }
 
+    /**
+     * This method returns the key associated with the lowest value in the hashmap
+     * @return
+     */
     public String getCheapestName(){
         String lowestKey="";
         Double lowestNum = Double.MAX_VALUE;

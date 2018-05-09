@@ -25,10 +25,17 @@ public class Bacon {
 
     }
 
+    /**
+     * This method is used to return a random price within the range listed above
+     * @return double which is assigned to a key in the hashmap
+     */
     public Double randomVal(){
         return (Math.random() * range) + (low <= high ? low : high);
     }
 
+    /**
+     * This method populates the hashmap with product names and their prices
+     */
     public void populateInventory(){
         list.put("Oscar Mayer", randomVal());
         list.put("Wright Brand", randomVal());
@@ -40,10 +47,18 @@ public class Bacon {
 
     }
 
+    /**
+     * This method returns the lowest value in the hasmap
+     * @return
+     */
     public Double getCheapestPrice(){
       return cheapestPrice;
     }
 
+    /**
+     * This method returns the key associated with the lowest value in the hashmap
+     * @return
+     */
     public String getCheapestName(){
         cheapestName="";
         Double lowestNum = Double.MAX_VALUE;
