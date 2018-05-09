@@ -46,6 +46,10 @@ public class storeInventory {
 
     }
 
+    /**
+     * This constructor begins to populate the store with each of the products within the SubClasses folder.
+     * @param list is the ArrayList of strings passed to the class by the main activity.
+     */
     storeInventory(ArrayList list){
         bacon.populateInventory();
         bread.populateInventory();
@@ -59,6 +63,10 @@ public class storeInventory {
        // Collections.addAll(itemTypes, "bacon","bread","coffee","eggs","milk","rice","oats");
     }
 
+    /**
+     * This method will take the ArrayList of strings passed to it by the constructor and search each related subclass for it's cheapest value and the key(name) associated with it. After doing so
+     * the method will then update the totalPrice for the cart and check the next entry in the ArrayList list.
+     */
     public void searchInventory(){
         double cheapestPrice;
         for(String str : list){
